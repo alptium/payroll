@@ -4,18 +4,12 @@ public class HourlySalaries {
 
 	private double hourlyRate;
 	private int hoursWorked;
-	private double grossPay;
-	private double taxDeduction;
-	private double netPay;
 
-	public HourlySalaries( int double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay) {
+	public HourlySalaries(int idNum, double hourlyRate, int hoursWorked) {
 
 		this.hourlyRate = hourlyRate;
 		this.hoursWorked = hoursWorked;
-		this.grossPay = grossPay;
-		this.taxDeduction = taxDeduction;
-		this.netPay = netPay;
-	
+
 	}
 
 	public double gethourlyRate() {
@@ -24,18 +18,6 @@ public class HourlySalaries {
 
 	public int gethoursWorked() {
 		return hoursWorked;
-	}
-
-	public double getgrossPay() {
-		return grossPay;
-	}
-
-	public double gettaxDeduction() {
-		return taxDeduction;
-	}
-
-	public double getnetPay() {
-		return netPay;
 	}
 
 }
