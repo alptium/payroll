@@ -8,7 +8,7 @@ public class Employee {
 	private String parentName;
 	private int dateOfBirth;
 	private int jmbg;
-	private boolean gender;
+	private String gender;
 	private int regNumb;
 	private String address;
 	private int contact;
@@ -16,7 +16,7 @@ public class Employee {
 	private int payCardNumb;
 
 	public Employee(int idNumb, String firstName, String lastName, String parentName, int dateOfBirth, int jmbg,
-			boolean gender, int regNumb, String address, int contact, int ssNumb, int payCardNumb) {
+			String gender, int regNumb, String address, int contact, int ssNumb, int payCardNumb) {
 
 		this.idNumb = idNumb;
 		this.firstName = firstName;
@@ -30,6 +30,10 @@ public class Employee {
 		this.contact = contact;
 		this.ssNumb = ssNumb;
 		this.payCardNumb = payCardNumb;
+	}
+
+	public Employee(int idNumb2, String firstName2, String lastName2, String parentName2, int dateOfBirth2,
+			String jmbg2, String gender2, int regNumb2, String address2, int contact2, int ssNumb2, int payCardNumb2) {
 	}
 
 	public int getidNumb() {
@@ -56,7 +60,7 @@ public class Employee {
 		return jmbg;
 	}
 
-	public boolean getgender() {
+	public String getgender() {
 		return gender;
 	}
 

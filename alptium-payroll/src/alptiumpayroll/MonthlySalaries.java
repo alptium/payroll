@@ -6,7 +6,7 @@ public class MonthlySalaries {
 	private double taxDeduction;
 	private double netPay;
 
-	public MonthlySalaries(int idNum, double grossPay, double taxDeduction, double netPay) {
+	public MonthlySalaries(int idNumb, double grossPay, double taxDeduction, double netPay) {
 
 		this.grossPay = grossPay;
 		this.taxDeduction = taxDeduction;
