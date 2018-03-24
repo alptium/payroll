@@ -8,7 +8,7 @@ public class HourlySalaries {
 	private double taxDeduction;
 	private double netPay;
 
-	public HourlySalaries(double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay) {
+	public HourlySalaries( int double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay) {
 
 		this.hourlyRate = hourlyRate;
 		this.hoursWorked = hoursWorked;
