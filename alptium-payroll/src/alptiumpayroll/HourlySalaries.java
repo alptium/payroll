@@ -1,6 +1,6 @@
 package alptiumpayroll;
 
-public class Salaries {
+public class HourlySalaries {
 
 	private double hourlyRate;
 	private int hoursWorked;
@@ -9,7 +9,7 @@ public class Salaries {
 	private double netPay;
 	private int overtime;
 
-	public Salaries(double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay,
+	public HourlySalaries(double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay,
 			int overtime) {
 
 		this.hourlyRate = hourlyRate;
