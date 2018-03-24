@@ -47,7 +47,7 @@ public class Main {
 				System.out.println("Enter employee's contact");
 				String contact = sc.next();
 
-				employees employees = new employees(Integer.parseInt(registrationNumber), firstName, lastName,
+				Employee employees = new Employee(Integer.parseInt(registrationNumber), firstName, lastName,
 						parentName, Integer.parseInt(dateOfBirth), Integer.parseInt(jmbg), Integer.parseInt(idNumber),
 						address, Integer.parseInt(contact));
 				System.out.println("Your input is completed. Do you want to enter a new employee? Y/N");
