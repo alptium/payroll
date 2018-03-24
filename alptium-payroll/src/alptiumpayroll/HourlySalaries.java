@@ -7,18 +7,15 @@ public class HourlySalaries {
 	private double grossPay;
 	private double taxDeduction;
 	private double netPay;
-	private int overtime;
 
-	public HourlySalaries(double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay,
-			int overtime) {
+	public HourlySalaries(double hourlyRate, int hoursWorked, double grossPay, double taxDeduction, double netPay) {
 
 		this.hourlyRate = hourlyRate;
 		this.hoursWorked = hoursWorked;
 		this.grossPay = grossPay;
 		this.taxDeduction = taxDeduction;
 		this.netPay = netPay;
-		this.overtime = overtime;
-
+	
 	}
 
 	public double gethourlyRate() {
@@ -41,7 +38,4 @@ public class HourlySalaries {
 		return netPay;
 	}
 
-	public int getovertime() {
-		return overtime;
-	}
 }
