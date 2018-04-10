@@ -5,31 +5,30 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 
-
 		try (Scanner sc = new Scanner(System.in)) {
 			System.out.println("Aptium Payroll application");
-	System.out.println("If you want to add new employee, enter E");
-	System.out.println("If employee is paid hourly, enter H");
-	System.out.println("If employee is paid monthly, enter M");
-	
-	String choise = sc.next();
-	  
-	if(choise.equals("E") || choise.equals("e")) {
-		 runDemoEmployee(); 
-	} else if(choise.equals("H") || choise.equals("h")) {
-		 runDemoHourlySalaries();
-	} else if(choise.equals("M") || choise.equals("m")) {
-		 runDemoMonthlySalaries();		
-	} else while (!choise.equals("E") && !choise.equals("e") && !choise.equals("H") && !choise.equals("h") && !choise.equals("M") && !choise.equals("m")) {
-		System.out.println("Information are entered incorrectly!");
-				 System.out.println("Please, try again");
-		 System.out.println();
-		 choise = sc.next();
-	 }
-		} 
-}		
-		
+			System.out.println("If you want to add new employee, enter E");
+			System.out.println("If employee is paid hourly, enter H");
+			System.out.println("If employee is paid monthly, enter M");
 
+			String choise = sc.next();
+
+			if (choise.equals("E") || choise.equals("e")) {
+				runDemoEmployee();
+			} else if (choise.equals("H") || choise.equals("h")) {
+				runDemoHourlySalaries();
+			} else if (choise.equals("M") || choise.equals("m")) {
+				runDemoMonthlySalaries();
+			} else
+				while (!choise.equals("E") && !choise.equals("e") && !choise.equals("H") && !choise.equals("h")
+						&& !choise.equals("M") && !choise.equals("m")) {
+					System.out.println("Information are entered incorrectly!");
+					System.out.println("Please, try again");
+					System.out.println();
+					choise = sc.next();
+				}
+		}
+	}
 
 	private static void runDemoEmployee() {
 
@@ -89,12 +88,44 @@ public class Main {
 		try (Scanner sc = new Scanner(System.in)) {
 
 			while (true) {
-				System.out.println("Enter employee's hourly rate : ");
+				System.out.print("Enter Hourly Rate: ");
 				double hourlyRate = sc.nextDouble();
 
-				System.out.println("Enter employee's hours worked : ");
+				while (hourlyRate < 0) {
+					System.out.print("Enter the hourly rate of pay for the employee: ");
+
+				}
+
+				System.out.print("Enter the hours worked by employee this week: ");
+
 				int hoursWorked = sc.nextInt();
+
+				while (hoursWorked < 0)
+
+				{
+
+					System.out.println("Error: You have entered a negative number!");
+					System.out.print("Enter the hours worked by employee this week: ");
+
+				}
+
+				if (hoursWorked > 40) {// Overtime
+
+					double hourlySalaries = hoursWorked * hourlyRate;
+					double overTime = (hoursWorked - 40) * (hourlyRate * 1.5);
+
+					System.out.printf("Hourly Rate: $%.2f\n", hourlyRate);
+					System.out.println("Regular Hours worked:" + hoursWorked);
+					System.out.println("Overtime Hours worked:" + (hoursWorked-40));
+					System.out.printf("Overtime Pay: $%.2f\n", overTime);
+					System.out.printf("Hourly salary: $%.2f\n", hoursWorked * hourlyRate);
+
+				}
+				System.out.printf("Enter next employee name or 'quit' to exit:");
+
+
 			}
+
 		}
 	}
 
