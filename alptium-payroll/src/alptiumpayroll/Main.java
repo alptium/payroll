@@ -100,26 +100,28 @@ public class Main {
 
 				int hoursWorked = sc.nextInt();
 
-				while (hoursWorked < 0)
-
-				{
+				if (hoursWorked < 0){
 
 					System.out.println("Error: You have entered a negative number!");
 					System.out.print("Enter the hours worked by employee this week: ");
 
-				}
-
-				if (hoursWorked > 40) {// Overtime
+				}else if (hoursWorked > 40) {// Overtime
 
 					double hourlySalaries = hoursWorked * hourlyRate;
 					double overTime = (hoursWorked - 40) * (hourlyRate * 1.5);
-
+					
+			    
+//					System.out.println("Employee:" + FirstName);
 					System.out.printf("Hourly Rate: $%.2f\n", hourlyRate);
 					System.out.println("Regular Hours worked:" + hoursWorked);
 					System.out.println("Overtime Hours worked:" + (hoursWorked-40));
 					System.out.printf("Overtime Pay: $%.2f\n", overTime);
-					System.out.printf("Hourly salary: $%.2f\n", hoursWorked * hourlyRate);
+					System.out.printf("Hourly salary: $%.2f\n", hourlySalaries);
 
+				} else {
+					System.out.print("dovla je u pravu");
+					
+					
 				}
 				System.out.printf("Enter next employee name or 'quit' to exit:");
 
