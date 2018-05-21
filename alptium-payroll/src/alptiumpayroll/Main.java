@@ -1,43 +1,54 @@
 package alptiumpayroll;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 
+		// TODO: List is now in-memory but later we will put it into DB
+		ArrayList<Employee> employees = new ArrayList<Employee>();
+		
 		try (Scanner sc = new Scanner(System.in)) {
 			System.out.println("Aptium Payroll application");
-			System.out.println("If you want to add new employee, enter E");
-			System.out.println("If employee is paid hourly, enter H");
-			System.out.println("If employee is paid monthly, enter M");
+			
+			while(true) {
+				System.out.println("If you want to add new employee, enter E");
+				System.out.println("If employee is paid hourly, enter H");
+				System.out.println("If employee is paid monthly, enter M");
+				System.out.println("If you want to quit this program, enter Q");
+				
+				// TODO: Options for showing statistics (e.g. number of employees, 
+				// total salary paid to all employees, separate employees & contractors
+				// step: someone signs, and then HR office will click on a button "Pay salaries"
+				// which will send data to a banking system
+				
+				String choice = sc.next();
 
-			String choice = sc.next();
-
-			if (choice.equalsIgnoreCase("E")) {
-				readEmployee();
-			} else if (choice.equalsIgnoreCase("H")) {
-				readHourlySalaries();
-			} else if (choice.equalsIgnoreCase("M")) {
-				readMonthlySalaries();
-			} else {
-				while (!choice.equalsIgnoreCase("E") 
-						&& !choice.equalsIgnoreCase("H")
-						&& !choice.equalsIgnoreCase("M")) {
-					System.out.println("Invalid input, please select: E | H | M.");
-					System.out.println("Please, try again");
-					System.out.println();
-					choice = sc.next();
-				}
+				if (choice.equalsIgnoreCase("E")) {
+					Employee employee = readEmployee();
+					employees.add(employee);
+				} else if (choice.equalsIgnoreCase("H")) {
+					readHourlySalaries();
+				} else if (choice.equalsIgnoreCase("M")) {
+					readMonthlySalaries();
+				} else if (choice.equalsIgnoreCase("Q")) {
+					break;
+				} else {
+					System.out.println("Invalid input, please try again.");
+				}				
 			}
 		}
 	}
 
-	private static void readEmployee() {
+	
+	// TODO: Read worker
+	private static Employee readEmployee() {
 
 		try (Scanner sc = new Scanner(System.in)) {
 
 			System.out.println("Enter employee's ID number: ");
-			int idNumb = sc.nextInt();
+			int idNumber = sc.nextInt();
 
 			System.out.println("Enter employee's first name: ");
 			String firstName = sc.next();
@@ -53,22 +64,18 @@ public class Main {
 
 			System.out.println("Enter employee's jmbg: ");
 			String jmbg = sc.next();
-			int jmbgLength = jmbg.length();
-
-			// TODO: Move to business
 			
-			if (jmbgLength != 13) {
+			while (!Validator.validateJmbg(jmbg)) {
 				System.out.println("You entered wrong JMBG number!");
 				System.out.println("Please try again.");
-				String jmbg1 = sc.next();
-				jmbg = jmbg1;
+				jmbg = sc.next();
 			}
 
 			System.out.println("Enter employee's gender: ");
 			String gender = sc.next();
 
 			System.out.println("Enter employee's registration number: ");
-			int regNumb = sc.nextInt();
+			int regNumber = sc.nextInt();
 
 			System.out.println("Enter employee's address: ");
 			String address = sc.next();
@@ -77,20 +84,27 @@ public class Main {
 			int contact = sc.nextInt();
 
 			System.out.println("Enter employee's social security number : ");
-			int ssNumb = sc.nextInt();
+			int socialSecurityNumber = sc.nextInt();
 
 			System.out.println("Enter employee's pay card number : ");
-			int payCardNumb = sc.nextInt();
+			int payCardNumber = sc.nextInt();
 
-			Employee employee = new Employee(idNumb, firstName, lastName, parentName, dateOfBirth, jmbg, gender,
-					regNumb, address, contact, ssNumb, payCardNumb);
+			Employee employee = new Employee(idNumber, firstName, lastName, parentName, dateOfBirth, jmbg, gender,
+					regNumber, address, contact, socialSecurityNumber, payCardNumber);
+			
+			return employee;
 		}
 	}
+	
+	// TODO: When recording timesheets (for contractors) need to specify which contractor (what is their id?)
 
 	// TODO: This relates to contractors
 	
 	private static void readHourlySalaries() {
 
+		// TODO: Hourly rate is rarely changed, just like employee data
+		// whilst hours worked is what varies month to month
+		
 		try (Scanner sc = new Scanner(System.in)) {
 
 			while (true) {
@@ -136,7 +150,13 @@ public class Main {
 
 	private static void readMonthlySalaries() {
 		try (Scanner sc = new Scanner(System.in)) {
+			
+			// TODO: Should take into account vacations, sick leave
+			
+			// Inputs: number of vacation days (70%), sick leave days (60%)
 
+			// Rarely changes: gross salary (in contract) & tax deduction (as percent: health, pension)
+			
 			while (true) {
 				System.out.println("Enter employee's gross pay : ");
 				double grossPay = sc.nextDouble();
