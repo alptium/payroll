@@ -7,23 +7,20 @@ public class MonthlySalaries {
 	private double netPay;
 
 	public MonthlySalaries(int idNumb, double grossPay, double taxDeduction, double netPay) {
-
 		this.grossPay = grossPay;
 		this.taxDeduction = taxDeduction;
 		this.netPay = netPay;
-
 	}
-
-	public double getgrossPay() {
+	
+	public double getGrossPay() {
 		return grossPay;
 	}
 
-	public double gettaxDeduction() {
+	public double getTaxDeduction() {
 		return taxDeduction;
 	}
 
-	public double getnetPay() {
+	public double getNetPay() {
 		return netPay;
 	}
-
 }

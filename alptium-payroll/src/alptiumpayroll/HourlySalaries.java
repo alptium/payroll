@@ -6,17 +6,15 @@ public class HourlySalaries {
 	private int hoursWorked;
 
 	public HourlySalaries(int idNumb, double hourlyRate, int hoursWorked) {
-
 		this.hourlyRate = hourlyRate;
 		this.hoursWorked = hoursWorked;
-
 	}
 
-	public double gethourlyRate() {
+	public double getHourlyRate() {
 		return hourlyRate;
 	}
 
-	public int gethoursWorked() {
+	public int getHoursWorked() {
 		return hoursWorked;
 	}
 

@@ -11,26 +11,28 @@ public class Main {
 			System.out.println("If employee is paid hourly, enter H");
 			System.out.println("If employee is paid monthly, enter M");
 
-			String choise = sc.next();
+			String choice = sc.next();
 
-			if (choise.equals("E") || choise.equals("e")) {
-				runDemoEmployee();
-			} else if (choise.equals("H") || choise.equals("h")) {
-				runDemoHourlySalaries();
-			} else if (choise.equals("M") || choise.equals("m")) {
-				runDemoMonthlySalaries();
-			} else
-				while (!choise.equals("E") && !choise.equals("e") && !choise.equals("H") && !choise.equals("h")
-						&& !choise.equals("M") && !choise.equals("m")) {
-					System.out.println("Information are entered incorrectly!");
+			if (choice.equalsIgnoreCase("E")) {
+				readEmployee();
+			} else if (choice.equalsIgnoreCase("H")) {
+				readHourlySalaries();
+			} else if (choice.equalsIgnoreCase("M")) {
+				readMonthlySalaries();
+			} else {
+				while (!choice.equalsIgnoreCase("E") 
+						&& !choice.equalsIgnoreCase("H")
+						&& !choice.equalsIgnoreCase("M")) {
+					System.out.println("Invalid input, please select: E | H | M.");
 					System.out.println("Please, try again");
 					System.out.println();
-					choise = sc.next();
+					choice = sc.next();
 				}
+			}
 		}
 	}
 
-	private static void runDemoEmployee() {
+	private static void readEmployee() {
 
 		try (Scanner sc = new Scanner(System.in)) {
 
@@ -53,6 +55,8 @@ public class Main {
 			String jmbg = sc.next();
 			int jmbgLength = jmbg.length();
 
+			// TODO: Move to business
+			
 			if (jmbgLength != 13) {
 				System.out.println("You entered wrong JMBG number!");
 				System.out.println("Please try again.");
@@ -78,12 +82,14 @@ public class Main {
 			System.out.println("Enter employee's pay card number : ");
 			int payCardNumb = sc.nextInt();
 
-			Employee employees = new Employee(idNumb, firstName, lastName, parentName, dateOfBirth, jmbg, gender,
+			Employee employee = new Employee(idNumb, firstName, lastName, parentName, dateOfBirth, jmbg, gender,
 					regNumb, address, contact, ssNumb, payCardNumb);
 		}
 	}
 
-	private static void runDemoHourlySalaries() {
+	// TODO: This relates to contractors
+	
+	private static void readHourlySalaries() {
 
 		try (Scanner sc = new Scanner(System.in)) {
 
@@ -93,45 +99,42 @@ public class Main {
 
 				while (hourlyRate < 0) {
 					System.out.print("Enter the hourly rate of pay for the employee: ");
-
+					// TODO: Missing: Reading the new hourly rate
 				}
 
 				System.out.print("Enter the hours worked by employee this week: ");
 
 				int hoursWorked = sc.nextInt();
 
-				if (hoursWorked < 0){
-
+				if (hoursWorked < 0) {
 					System.out.println("Error: You have entered a negative number!");
 					System.out.print("Enter the hours worked by employee this week: ");
-
-				}else if (hoursWorked > 40) {// Overtime
-
+				} else if (hoursWorked > 40) {// Overtime
+					// TODO: Business logic
+					
+					// TODO: Check if this should be moved into region for >= && <= 40
 					double hourlySalaries = hoursWorked * hourlyRate;
 					double overTime = (hoursWorked - 40) * (hourlyRate * 1.5);
-					
 			    
 //					System.out.println("Employee:" + FirstName);
 					System.out.printf("Hourly Rate: $%.2f\n", hourlyRate);
 					System.out.println("Regular Hours worked:" + hoursWorked);
-					System.out.println("Overtime Hours worked:" + (hoursWorked-40));
+					System.out.println("Overtime Hours worked:" + (hoursWorked - 40));
 					System.out.printf("Overtime Pay: $%.2f\n", overTime);
 					System.out.printf("Hourly salary: $%.2f\n", hourlySalaries);
-
 				} else {
 					System.out.print("dovla je u pravu");
-					
-					
 				}
+				
 				System.out.printf("Enter next employee name or 'quit' to exit:");
-
-
 			}
 
 		}
 	}
+	
+	// TODO: This is for regular full time employees
 
-	private static void runDemoMonthlySalaries() {
+	private static void readMonthlySalaries() {
 		try (Scanner sc = new Scanner(System.in)) {
 
 			while (true) {
@@ -146,4 +149,9 @@ public class Main {
 			}
 		}
 	}
+	
+	
+	// TODO: Enable user to quit the program, and to show the results of the calculations
+	
+	// TODO: Handling multiple employees
 }
